@@ -11,12 +11,12 @@ embedding_fn = model.DefaultEmbeddingFunction()
 COLLECTION_NAME = "doc_comparison_collection"
 
 # --- 2. 加载并准备数据 ---
-print("正在加载 CSV 文件 'test_data.xlsx - Sheet1.csv'...")
+print("正在加载 CSV 文件 'test_data_des_part2.xlsx'...")
 try:
-    df = pd.read_excel('test_data_des.xlsx')
+    df = pd.read_excel('test_data_des_part2.xlsx')
     print("文件加载成功。")
 except FileNotFoundError:
-    print("错误: 'test_data.xlsx - Sheet1.csv' 文件未找到。请确保文件与脚本在同一目录下。")
+    print("错误: 'test_data_des_part2.xlsx' 文件未找到。请确保文件与脚本在同一目录下。")
     exit()
 
 # 用于存储最终结果的列表
@@ -68,7 +68,7 @@ for index, row in df.iterrows():
     print(f"  - 正在与 {len(keywords)} 个关键词进行比较...")
     for keyword in keywords:
         query_vectors = embedding_fn.encode_queries([keyword])
-        
+        print(keyword)
         # 执行搜索
         search_res = client.search(
             collection_name=COLLECTION_NAME,
@@ -76,7 +76,7 @@ for index, row in df.iterrows():
             limit=2,  # 返回与原始和修订文档的两个匹配结果
             output_fields=["doc_name"],
         )
-
+        print(search_res)
         # 解析搜索结果
         similarity_original = None
         similarity_revised = None
