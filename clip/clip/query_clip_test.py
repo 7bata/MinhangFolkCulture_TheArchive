@@ -2,6 +2,7 @@ import re
 import torch
 import clip
 from PIL import Image
+import pandas as pd
 
 device = "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)
@@ -13,4 +14,3 @@ with torch.no_grad():
     except RuntimeError:
         query_input = clip.tokenize(text, truncate=True).to(device)
         print("截断")
-print(query_input.cpu().detach().numpy().tolist()[0])
