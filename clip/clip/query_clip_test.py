@@ -14,5 +14,3 @@ with torch.no_grad():
     except RuntimeError:
         query_input = clip.tokenize(text, truncate=True).to(device)
         print("截断")
-text_features = model.encode_text(query_input)
-print(text_features.cpu().detach().numpy().tolist()[0])
