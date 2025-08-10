@@ -6,7 +6,7 @@ import torch
 from transformers import CLIPVisionModelWithProjection
 
 model = CLIPVisionModelWithProjection.from_pretrained("Searchium-ai/clip4clip-webvid150k")
-example = "./example_video.mp4"
+example = "./C0268.MP4"
 
 
 # Code to convert one video to few images.

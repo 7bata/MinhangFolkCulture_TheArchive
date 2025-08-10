@@ -1,7 +1,7 @@
 from transformers import CLIPTokenizer, CLIPTextModelWithProjection
 
 
-search_sentence = "什么是马桥手狮舞？"
+search_sentence = "皮影戏是什么样子的？"
 
 model = CLIPTextModelWithProjection.from_pretrained("Searchium-ai/clip4clip-webvid150k")
 tokenizer = CLIPTokenizer.from_pretrained("Searchium-ai/clip4clip-webvid150k")
